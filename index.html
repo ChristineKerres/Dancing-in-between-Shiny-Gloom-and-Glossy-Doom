@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>README ... Dancing in between Shiny Gloom and Glossy Doom ...</title>
+  </head>
+  <body>
+    <style>
+      body {
+        height: 100%;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-image: linear-gradient(
+          rgb(0, 0, 0) 0%,
+          rgb(0, 0, 0) 85%,
+          rgb(240, 240, 240) 95%,
+          rgb(255, 255, 255) 98%
+        );
+      }
+      h1 {
+        position: fixed;
+        right: 15px;
+        top: 10px;
+        color: rgb(255, 255, 255);
+        font-family: Selectric;
+        font-size: 20px;
+      }
+      p {
+        font-family: Selectric;
+        font-size: 13px;
+        color: white;
+        hyphens: auto;
+      }
+      #headline {
+        width: 100%;
+        position: relative;
+        margin: auto;
+        max-height: 90% !important;
+      }
+      a:link,
+      a:visited {
+        text-decoration: none;
+        color: rgb(255, 255, 255);
+        z-index: 999999;
+      }
+      .item-a {
+        grid-area: header;
+        margin-top: 20px;
+      }
+      .item-b {
+        grid-area: main;
+        padding-bottom: 40px;
+      }
+      .container {
+        display: grid;
+        grid-template-areas: "header" "main";
+        grid-template-rows: auto;
+      }
+    </style>
+    <h1>README</h1>
+    <div class="container">
+      <div class="item-a">
+        <img id="headline" src="img/dancing in between.png" alt="" />
+      </div>
+      <div class="item-b">
+        <p>
+          README <br />
+          <!--Die Arbeit stellt einen Versuch dar, das Beziehungsverhältnis zwischen
+          User:innen und computergestützten Maschinen mit Hilfe einer Metapher
+          zu analysieren. In assoziativer Weise werden beide Positionen als
+          integrale Elemente einer Performance verstanden, in der Maschinen als
+          Konzepte betrachtet werden, die ihre Nutzer choreografieren. Denn in
+          der Interaktion mit computergestützten Maschinen, setzen sich
+          User:innen den rahmenden Bedingungen der Software aus. Das
+          Computerprogramm ist in seinen konzeptionellen Bedingungen festgelegt
+          und in der Eindeutigkeit des Codes sowie der Gestaltung der
+          Benutzeroberfläche determiniert, denen User:innen in einem passiven
+          Abhängigkeitsverhältnis entgegnen.-->
+          The work is an attempt to describe the relationship between users and
+          computerized machines with the help of a metaphor. Associatively, both
+          positions are understood as integral components of a performance in
+          which machines are concepts that choreograph their users. For the
+          interaction with computerized machines, the users expose themselves to
+          the framework parameters of the software. TThe computer program, bound
+          by its conceptual constraints, is defined by the unambiguousness of
+          its code and the design of the user interface.Users in turn, are
+          confronted in a passive relationship of dependency.
+          <br /><br />
+          HOW TO USE <i> To the Apathetic User of Arrogant Maschines </i><br />
+          To be able to read the letter, it is necessary to continuously turn
+          the paper to the front or back.
+        </p>
+        <p>
+          CREDITS <br />Project by
+          <a href="https://www.instagram.com/eni_t_ine/"
+            ><i>Christine Kerres</i></a
+          >
+          <br />
+          Bachelor Kommunikationsdesign
+          <br />Hochschule Mainz <br />2024
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
