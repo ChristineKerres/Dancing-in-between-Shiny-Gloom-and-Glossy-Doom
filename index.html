@@ -4,107 +4,141 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>README ... Dancing in between Shiny Gloom and Glossy Doom ...</title>
-  </head>
-  <body>
     <style>
       @font-face {
         font-family: Selectric;
         src: url(SelectricMono.otf);
       }
       body {
-        height: 100%;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-image: linear-gradient(
-          rgb(0, 0, 0) 0%,
-          rgb(0, 0, 0) 85%,
-          rgb(240, 240, 240) 95%,
-          rgb(255, 255, 255) 98%
-        );
+        user-select: none;
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.05s ease-in-out;
+        /* Faster transition */
+      }
+
+      #overlay {
+        cursor: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        pointer-events: none;
+        user-select: none;
+        font-family: "Latitude", sans-serif;
+        font-size: 12px;
+      }
+
+      #overlay p {
+        color: black;
+        /* Standardfarbe des Texts auf hellem Hintergrund */
+      }
+
+      body.dark-mode #overlay p {
+        color: white;
+        /* Farbe des Texts auf dunklem Hintergrund */
       }
       h1 {
         position: fixed;
         right: 15px;
         top: 10px;
-        color: rgb(255, 255, 255);
+        color: black;
         font-family: Selectric;
         font-size: 20px;
-      }
-      p {
-        font-family: Selectric;
-        font-size: 13px;
-        color: white;
-        hyphens: auto;
       }
       #headline {
         width: 100%;
         position: relative;
         margin: auto;
-        max-height: 90% !important;
-      }
-      a:link,
-      a:visited {
-        text-decoration: none;
-        color: rgb(255, 255, 255);
-        z-index: 999999;
-      }
-      .item-a {
-        grid-area: header;
-        margin-top: 20px;
-      }
-      .item-b {
-        grid-area: main;
-        padding-bottom: 40px;
-      }
-      .container {
-        display: grid;
-        grid-template-areas: "header" "main";
-        grid-template-rows: auto;
+        margin-top: 15px !important;
+        margin-right: 0 !important;
       }
     </style>
+  </head>
+
+  <body>
     <h1>README</h1>
-    <div class="container">
-      <div class="item-a">
-        <img id="headline" src="img/dancing in between.png" alt="" />
-      </div>
-      <div class="item-b">
-        <p>
-          README <br />
-          <!--Die Arbeit stellt einen Versuch dar, das Beziehungsverhältnis zwischen
-          User:innen und computergestützten Maschinen mit Hilfe einer Metapher
-          zu analysieren. In assoziativer Weise werden beide Positionen als
-          integrale Elemente einer Performance verstanden, in der Maschinen als
-          Konzepte betrachtet werden, die ihre Nutzer choreografieren. Denn in
-          der Interaktion mit computergestützten Maschinen, setzen sich
-          User:innen den rahmenden Bedingungen der Software aus. Das
-          Computerprogramm ist in seinen konzeptionellen Bedingungen festgelegt
-          und in der Eindeutigkeit des Codes sowie der Gestaltung der
-          Benutzeroberfläche determiniert, denen User:innen in einem passiven
-          Abhängigkeitsverhältnis entgegnen.-->
-          The work is an attempt to describe the relationship between users and
-          computerized machines with the help of a metaphor. Associatively, both
-          positions are understood as integral components of a performance in
-          which machines are concepts that choreograph their users. For the
-          interaction with computerized machines, the users expose themselves to
-          the framework parameters of the software. TThe computer program, bound
-          by its conceptual constraints, is defined by the unambiguousness of
-          its code and the design of the user interface.Users in turn, are
-          confronted in a passive relationship of dependency.
-          <br /><br />
-          HOW TO USE <i> To the Apathetic User of Arrogant Maschines </i><br />
-          To be able to read the letter, it is necessary to continuously turn
-          the paper to the front or back.
-        </p>
-        <p>
-          CREDITS <br />Project by
-          <a href="https://www.instagram.com/eni_t_ine/"
-            ><i>Christine Kerres</i></a
-          >
-          <br />
-          Bachelor Kommunikationsdesign
-          <br />Hochschule Mainz <br />2024
-        </p>
-      </div>
-    </div>
+    <div id="overlay"></div>
+    <img id="headline" src="img/dancing in between.png" alt="" />
+
+    <script>
+      document.addEventListener("selectstart", function (e) {
+        e.preventDefault();
+      });
+
+      const colorOptions = [
+        "#ededed",
+        "#f2f2f2",
+        "#0c1323",
+        "#000000",
+        "#ffffff",
+      ];
+
+      function getRandomColor() {
+        return colorOptions[Math.floor(Math.random() * colorOptions.length)];
+      }
+
+      function getRandomTransitionDuration(isFastFlashing) {
+        return isFastFlashing
+          ? Math.random() * 0.2 + 0.02
+          : Math.random() * 0.5 + 0.1;
+      }
+
+      function getRandomPauseDuration(isFastFlashing) {
+        return isFastFlashing ? Math.random() * 0.1 : Math.random() * 0.4 + 0.1;
+      }
+
+      function changeBackgroundColor(isFastFlashing) {
+        const body = document.body;
+        const randomTransitionDuration =
+          getRandomTransitionDuration(isFastFlashing);
+        const randomPauseDuration = getRandomPauseDuration(isFastFlashing);
+
+        body.style.transitionDuration = randomTransitionDuration + "s";
+        body.style.backgroundColor = getRandomColor();
+
+        body.classList.toggle(
+          "dark-mode",
+          body.style.backgroundColor === colorOptions[2]
+        );
+
+        setTimeout(() => {
+          body.style.transitionDuration = "0.05s"; // Faster transition
+          body.style.backgroundColor = "";
+        }, randomPauseDuration * 1000);
+
+        setTimeout(
+          () => changeBackgroundColor(!isFastFlashing),
+          (randomPauseDuration + randomTransitionDuration) * 1000
+        );
+      }
+
+      function displayImageAndTextOnClick() {
+        const overlay = document.getElementById("overlay");
+        const image = document.createElement("img");
+
+        // Setze die URL des Bildes nach Bedarf
+        image.src = "Chicken-loop-2.gif";
+
+        image.style.width = "100%";
+        image.style.height = "100%";
+        image.style.objectFit = "cover";
+
+        document.body.addEventListener("click", () => {
+          // Hier wird die Navigation zur index.html ausgelöst
+          window.location.href = "home.html";
+        });
+      }
+
+      changeBackgroundColor(true);
+      displayImageAndTextOnClick();
+    </script>
   </body>
 </html>
