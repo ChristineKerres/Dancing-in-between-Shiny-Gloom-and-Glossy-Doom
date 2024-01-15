@@ -4,6 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>README ... Dancing in between Shiny Gloom and Glossy Doom ...</title>
+    <script>
+      window.onload = function () {
+        window.scrollTo(0, document.body.scrollHeight);
+      };
+    </script>
   </head>
   <body>
     <style>
@@ -12,15 +17,18 @@
         src: url(SelectricMono.otf);
       }
       body {
+        transform: rotate(180deg);
+        transform-origin: center;
         height: 100%;
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-image: linear-gradient(
-          rgb(0, 0, 0) 0%,
-          rgb(0, 0, 0) 85%,
-          rgb(240, 240, 240) 95%,
-          rgb(255, 255, 255) 98%
+          rgb(255, 255, 255) 2%,
+          rgb(240, 240, 240) 5%,
+          rgb(0, 0, 0) 15%,
+          rgb(0, 0, 0) 0%
         );
+        transition: transform 1s ease-in-out;
       }
       h1 {
         position: fixed;
