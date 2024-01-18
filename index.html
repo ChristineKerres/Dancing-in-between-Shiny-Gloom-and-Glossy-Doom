@@ -17,7 +17,6 @@
         align-items: center;
         justify-content: center;
         transition: background-color 0.05s ease-in-out;
-        /* Faster transition */
       }
 
       #overlay {
@@ -38,12 +37,10 @@
 
       #overlay p {
         color: black;
-        /* Standardfarbe des Texts auf hellem Hintergrund */
       }
 
       body.dark-mode #overlay p {
         color: white;
-        /* Farbe des Texts auf dunklem Hintergrund */
       }
       h1 {
         position: fixed;
@@ -110,7 +107,7 @@
         );
 
         setTimeout(() => {
-          body.style.transitionDuration = "0.05s"; // Faster transition
+          body.style.transitionDuration = "0.05s";
           body.style.backgroundColor = "";
         }, randomPauseDuration * 1000);
 
@@ -124,7 +121,6 @@
         const overlay = document.getElementById("overlay");
         const image = document.createElement("img");
 
-        // Setze die URL des Bildes nach Bedarf
         image.src = "Chicken-loop-2.gif";
 
         image.style.width = "100%";
@@ -132,7 +128,6 @@
         image.style.objectFit = "cover";
 
         document.body.addEventListener("click", () => {
-          // Hier wird die Navigation zur index.html ausgelöst
           window.location.href = "home.html";
         });
       }
